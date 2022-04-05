@@ -69,7 +69,7 @@ class News(models.Model):
         return str(self.h1) 
     
     def get_absolute_url(self):
-        return reverse('news_detail', kwargs={'slug': self.slug}) # new
+        return reverse('news_detail', kwargs={'slug_news': self.slug}) # new
 
     def save(self, *args, **kwargs): # new
         if not self.slug:

@@ -1,6 +1,10 @@
 <!-- templates/about.html -->
 {% extends 'base.html' %}
- 
+
+ {% block title %}{{ news.title }}{% endblock %}
+
+{% block META_description %}{{ news.description }}{% endblock %}
+
 {% block content %}
 <h1>Регионы</h1>
 

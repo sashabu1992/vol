@@ -3,16 +3,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90680653-2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'UA-90680653-2');
-    </script>
-
+  
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,10 +27,10 @@
     <meta property="og:image:height" content="600"> -->
 
     <!-- Meta -->
-    <meta name="description" content="Responsive Bootstrap 4 Dashboard Template">
+    <meta name="description" content="{% block META_description %}{% endblock META_description %}">
     <meta name="author" content="BootstrapDash">
 
-    <title>Azia Responsive Bootstrap 4 Dashboard Template</title>
+    <title>{% block title %}{% endblock title %}</title>
 
     <!-- vendor css -->
     <link href="{% static 'lib/fontawesome-free/css/all.min.css' %}" rel="stylesheet">
@@ -151,7 +142,7 @@
       <div class="container">
         <div class="az-content-body">
 
-        		{% block content %}
+{% block content %}
 
         
 
