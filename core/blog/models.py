@@ -12,7 +12,7 @@ class Category(models.Model):
     h1 = models.CharField(max_length=255, verbose_name="Заголовок H1")
     image_zast = models.ImageField(upload_to='cat/image', verbose_name="Заставка категории", blank=True)
     post = RichTextField( verbose_name="Содержание", blank=True)
-    introtext = models.CharField(max_length=1000, verbose_name="Краткое описание", blank=True)
+    introtext = models.TextField(max_length=1000, verbose_name="Краткое описание", blank=True)
 
     created = models.DateField(auto_now_add=True, blank=True, verbose_name="Дата создания")
     modified = models.DateField(auto_now=True, verbose_name="Дата изменения")
@@ -50,7 +50,7 @@ class News(models.Model):
     h1 = models.CharField(max_length=255, verbose_name="Заголовок H1")
     image_zast = models.ImageField(upload_to='cat/image', verbose_name="Заставка статьи", blank=True)
     post = RichTextField( verbose_name="Содержание", blank=True)
-    introtext = models.CharField(max_length=1000, verbose_name="Краткое описание", blank=True)
+    introtext = models.TextField(max_length=1000, verbose_name="Краткое описание", blank=True)
 
     created = models.DateField(auto_now_add=True, blank=True, verbose_name="Дата создания")
     modified = models.DateField(auto_now=True, verbose_name="Дата изменения")
