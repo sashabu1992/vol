@@ -3,3 +3,4 @@ pillow
 slugify
 python-slugify
 django-jazzmin
+django-ckeditor
