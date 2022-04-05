@@ -3,9 +3,3 @@ pillow
 slugify
 python-slugify
 django-jazzmin
-asdasd
-asdasd
-asd
-
-as
-asdasd
