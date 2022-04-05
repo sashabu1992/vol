@@ -30,7 +30,7 @@ class Category(models.Model):
         """Return title and username."""
         return str(self.h1) 
 
-    
+
     def get_absolute_url(self):
         return reverse('category_detail', kwargs={'slug': self.slug}) # new
 
