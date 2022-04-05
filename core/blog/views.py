@@ -16,16 +16,33 @@ def BookListView(request):
     )
 
 
-def DetailPosts(request, slug):
+def DetailPosts(request, slug_category):
     try:
-        book_id=Category.objects.get(slug=slug)
+        cat=Category.objects.get(slug=slug_category)
+        id_cat = Category.objects.get(slug=slug_category).id
+        detailcat=News.objects.filter(parent=id_cat)
     except Category.DoesNotExist:
-        raise Http404("Статья не найдена")
+        raise Http404("Категория не найдена")
 
     #book_id=get_object_or_404(Book, pk=pk)
 
     return render(
         request,
-        'blog/news.html',
-        context={'book':book_id,}
+        'blog/detail-blog.html',
+        context={'cat':cat,'detailcat':detailcat}
+    )
+
+
+def DetailNews(request, slug, slug_category):
+    try:
+        news=News.objects.get(slug=slug)
+    except Category.DoesNotExist:
+        raise Http404("Категория не найдена")
+
+    #book_id=get_object_or_404(Book, pk=pk)
+
+    return render(
+        request,
+        'blog/detail-news.html',
+        context={'news':news}
     )
