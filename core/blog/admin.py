@@ -8,13 +8,13 @@ from .models import Category, News
 
 @admin.register(Category)
 class Category(admin.ModelAdmin):
-    list_display = ('h1', 'created', 'is_draft', 'url')
+    list_display = ('h1', 'created', 'is_draft', 'slug')
     fieldsets = (
         ('Содержимое', {
             'fields': ('h1','image_zast', 'introtext', 'post')
         }),
         ('SEO', {
-            'fields': ('title','description', 'url')
+            'fields': ('title','description', 'slug')
         }),        
         ('Настройки', {
             'fields': ('created', 'modified', 'is_draft')
@@ -25,13 +25,13 @@ class Category(admin.ModelAdmin):
 
 @admin.register(News)
 class News(admin.ModelAdmin):
-    list_display = ('h1', 'created', 'is_draft', 'url')
+    list_display = ('h1', 'created', 'is_draft', 'slug')
     fieldsets = (
         ('Содержимое', {
             'fields': ('parent', 'h1','image_zast', 'introtext', 'post')
         }),
         ('SEO', {
-            'fields': ('title','description', 'url')
+            'fields': ('title','description', 'slug')
         }),        
         ('Настройки', {
             'fields': ('created', 'modified', 'is_draft')

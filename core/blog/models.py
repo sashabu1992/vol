@@ -17,7 +17,7 @@ class Category(models.Model):
     created = models.DateField(auto_now_add=True, blank=True, verbose_name="Дата создания")
     modified = models.DateField(auto_now=True, verbose_name="Дата изменения")
     is_draft = models.BooleanField(default=True, verbose_name="Опубликован")
-    url = models.SlugField(max_length=255, blank=True, unique=True, verbose_name="URl")
+    slug = models.SlugField(max_length=255, blank=True, unique=True, verbose_name="URl")
 
 
     class Meta:
@@ -29,12 +29,14 @@ class Category(models.Model):
     def __str__(self):
         """Return title and username."""
         return str(self.h1) 
-    
 
+    
+    def get_absolute_url(self):
+        return reverse('category_detail', kwargs={'slug': self.slug}) # new
 
     def save(self, *args, **kwargs): # new
-        if not self.url:
-            self.url = slugify(self.title)
+        if not self.slug:
+            self.slug = slugify(self.title)
         return super(Category, self).save(*args, **kwargs)
 
 
@@ -53,7 +55,7 @@ class News(models.Model):
     created = models.DateField(auto_now_add=True, blank=True, verbose_name="Дата создания")
     modified = models.DateField(auto_now=True, verbose_name="Дата изменения")
     is_draft = models.BooleanField(default=True, verbose_name="Опубликован")
-    url = models.SlugField(max_length=255, blank=True, unique=True, verbose_name="URl")
+    slug = models.SlugField(max_length=255, blank=True, unique=True, verbose_name="URl")
 
 
     class Meta:
@@ -66,9 +68,10 @@ class News(models.Model):
         """Return title and username."""
         return str(self.h1) 
     
-
+    def get_absolute_url(self):
+        return reverse('news_detail', kwargs={'slug': self.slug}) # new
 
     def save(self, *args, **kwargs): # new
-        if not self.url:
-            self.url = slugify(self.title)
+        if not self.slug:
+            self.slug = slugify(self.title)
         return super(News, self).save(*args, **kwargs)
