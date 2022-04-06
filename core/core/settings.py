@@ -145,3 +145,5 @@ JAZZMIN_SETTINGS = {
     "site_brand": "Kual.RU",
   
 }
+
+LOGIN_REDIRECT_URL = '/'

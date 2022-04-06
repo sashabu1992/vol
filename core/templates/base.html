@@ -39,27 +39,31 @@
       <section id="head">
           <div class="container">
               <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-6">
                       <p class="site-title">
                          <a href="/">Kual.ru -Личные заметки </a> 
                       </p>
                   </div>
-                  <div class="col-md-4">
-                      
+                  <div class="col-md-6">
+                 <div class="navst">
+                     {% if request.user.is_authenticated %}
+<li class="last"> {{user.username}} | <a href="{% url 'logout' %}">Выйти</a></li>
+{% else %}
+<li class="last"><a href="{% url 'register' %}">Регистрация</a> | <a href="{% url 'login' %}">Войти</a></li>
+{% endif %}
+                       </div>
                   </div>
               </div>
           </div>
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-12">
-                      
-                  </div>
-              </div>
-          </div>
+        
       </section>
   </header>
   
-  
+  <style>
+    .navst a{
+      color:#fff;
+    }
+  </style>
   <section id="seacrh">
       <div class="container">
           <form data-key="71709464ba6ebec82c0270daa6d5427f60a1243a" action="rezultatyi-poiska/" method="get" class="well msearch2" id="mse2_form">

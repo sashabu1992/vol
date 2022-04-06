@@ -1,17 +1,42 @@
 <!-- templates/about.html -->
 {% extends 'base.html' %}
- 
+  {% block title %}Регистрация на сайте{% endblock %}
+
+{% block META_description %}Регистрация на сайте{% endblock %}
+
+
 {% block content %}
 <h1>Страница регистрации</h1>
 
-<form method="post">
-    {% csrf_token %}
+
+
+<div class="login-form">
+    <form  method="post">
+        <h2 class="text-center">Регистрация</h2>  
+
+            {% csrf_token %}
     {% for f in form %}
-<p><label class="form-label" for="{{ f.id_for_label }}">{{f.label}}: </label>{{ f }}</p>
-<div class="form-error">{{ f.errors }}</div>
-{% endfor %}
-    <button type="submit">Регистрация</button>
-</form>
+    <div class="form-group">           
+            {{ f }}
+            <div class="form-error">{{ f.errors }}</div>
+        </div>
+
+
+{% endfor %}     
+        
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">Регистрация</button>
+        </div>
+        <div class="clearfix">
+           
+          
+        </div>        
+    </form>
+   
+</div>
+
+
  
 {% endblock content %}
 
