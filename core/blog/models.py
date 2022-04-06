@@ -1,6 +1,7 @@
 from django.db import models
 from slugify import slugify
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 # Create your models here.
 
 class Category(models.Model):
@@ -32,7 +33,7 @@ class Category(models.Model):
 
 
     def get_absolute_url(self):
-        return reverse('category_detail', kwargs={'slug_category': self.slug}) # new
+        return reverse('DetailPosts', kwargs={'slug_category': self.slug}) # new
 
     def save(self, *args, **kwargs): # new
         if not self.slug:
@@ -69,7 +70,7 @@ class News(models.Model):
         return str(self.h1) 
     
     def get_absolute_url(self):
-        return reverse('news_detail', kwargs={'slug_news': self.slug}) # new
+        return reverse('DetailNews', kwargs={'slug_news': self.slug}) # new
 
     def save(self, *args, **kwargs): # new
         if not self.slug:

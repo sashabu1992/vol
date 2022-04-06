@@ -35,7 +35,7 @@
                          {% for i in dataset %}
                         <tr>
                             <td>{{ i.id }}</td>
-                            <td><b><a href="{{ i.slug }}">{{ i.h1 }}</a></b></td>
+                            <td><b><a href="{{ i.get_absolute_url }}">{{ i.h1 }}</a></b></td>
                             <td><b> {% total_count_posts i.id %}  </b></td>
                       
                          </tr>
