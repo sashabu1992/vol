@@ -3,18 +3,25 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, ListView, DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView
+from django.contrib.auth import logout
 from .utils import *
 from .forms import *
 from blog.models import Category
 
 from django.urls import reverse, reverse_lazy
 
+from django.shortcuts import redirect
 
 
 class Main(ListView):
     model = Category
     template_name = 'home.html'
 
+
+def logout_user(request):
+    print("----------------")
+    logout(request)
+    return redirect('main')
 
 
 class RegisterUser(CreateView):
@@ -26,10 +33,7 @@ class RegisterUser(CreateView):
         context = super().get_context_data(**kwargs)
         return dict(list(context.items()))
 
-    def form_valid(self, form):
-        user = form.save()
-        login(self.request, user)
-        return redirect('home')
+
 
 
 class LoginUser(LoginView):
@@ -37,10 +41,11 @@ class LoginUser(LoginView):
     template_name = 'login.html'
 
     
-    def logout_user(request):
-        logout(request)
-        return redirect('login')
+
  
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         return dict(list(context.items()))
+
+
+
