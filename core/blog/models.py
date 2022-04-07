@@ -20,17 +20,14 @@ class Category(models.Model):
     is_draft = models.BooleanField(default=True, verbose_name="Опубликован")
     slug = models.SlugField(max_length=255, blank=True, unique=True, verbose_name="URl")
 
-
     class Meta:
         ordering = ('title',)
         verbose_name = ('Категорию')
         verbose_name_plural = ('Категории')
 
-
     def __str__(self):
         """Return title and username."""
         return str(self.h1) 
-
 
     def get_absolute_url(self):
         return reverse('DetailPosts', kwargs={'slug_category': self.slug}) # new
@@ -58,12 +55,10 @@ class News(models.Model):
     is_draft = models.BooleanField(default=True, verbose_name="Опубликован")
     slug = models.SlugField(max_length=255, blank=True, unique=True, verbose_name="URl")
 
-
     class Meta:
         ordering = ('title',)
         verbose_name = ('Статью')
         verbose_name_plural = ('Статьи')
-
 
     def __str__(self):
         """Return title and username."""
