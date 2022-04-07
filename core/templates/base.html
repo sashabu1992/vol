@@ -39,7 +39,7 @@
                            
                  {% if request.user.is_authenticated %}
  <img alt="image" class="rounded-circle" src="{% static 'img/profile_small.jpg' %}"/>
- <span class="block m-t-xs font-bold">{{user.username}} </span>
+ <span class="block m-t-xs font-bold">{{user.first_name}} {{user.last_name}} </span>
              
 {% else %}
  <span class="block m-t-xs font-bold"> </span>
