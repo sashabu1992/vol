@@ -8,7 +8,7 @@ from django.views import generic
 
 def BookListView(request):
     dataset=Category.objects.filter(is_draft=True)
-
+    
     return render(
         request,
         'blog/blog.html',
@@ -46,3 +46,5 @@ def DetailNews(request, slug_news, slug_category):
         'blog/detail-news.html',
         context={'news':news}
     )
+
+
