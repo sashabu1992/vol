@@ -3,23 +3,40 @@
 {% extends 'base.html' %}
 
 {% load blog_tags %}
+{% load main_tags %}
 
 {% block title %}Блог{% endblock %}
 
 {% block META_description %}Описание блога{% endblock %}
 
 
-
 {% block content %}
-<h1>Блог</h1>
+    <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h1>Блог</h1>
 
 
+<ol class="breadcrumb"itemscope itemtype="{% breadcrumb_schema %}">
+  {% url 'main' as main %}
+  {% breadcrumb_home main 'Главная' %}
 
+  {% url 'BookListView' as BookListView %}
+  {% breadcrumb_active BookListView _('Блог') 2 %}
 
-<div class="row">
-<div class="col-lg-12 col-xl-12 mg-t-20 mg-lg-t-0">
+</ol>
+
+                 
+                </div>
+            </div>
+               
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="wrapper wrapper-content">
+
+                 
+
               <div class="card card-table-one">
-                <h6 class="card-title">Категории</h6>
+              
                
                 <div class="table-responsive">
                   <table class="table">
@@ -46,10 +63,11 @@
                   </table>
                 </div><!-- table-responsive -->
               </div><!-- card -->
+
+     
+                </div>
+
             </div>
-</div>
-
-
-
+        </div>
 
 {% endblock content %}

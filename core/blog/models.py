@@ -47,7 +47,7 @@ class News(models.Model):
     description = models.CharField(max_length=350, verbose_name="Заголовок Description", blank=True)
     
     """Основные данные категории"""
-    parent = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Категория")
+    parent = models.OneToOneField(Category, on_delete=models.PROTECT, verbose_name="Категория", related_name="parent")
     h1 = models.CharField(max_length=255, verbose_name="Заголовок H1")
     image_zast = models.ImageField(upload_to='cat/image', verbose_name="Заставка статьи", blank=True)
     post = RichTextField( verbose_name="Содержание", blank=True)
