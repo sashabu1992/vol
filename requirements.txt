@@ -4,3 +4,4 @@ slugify
 python-slugify
 django-jazzmin
 django-ckeditor
+django-import-export
