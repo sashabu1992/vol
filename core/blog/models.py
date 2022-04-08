@@ -3,6 +3,18 @@ from slugify import slugify
 from ckeditor.fields import RichTextField
 from django.urls import reverse
 # Create your models here.
+import uuid
+import os
+
+def get_file_path_category(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('blog/', filename)
+
+def get_file_path_news(instance, filename):
+    ext = filename.split('.')[-1]
+    filename = "%s.%s" % (uuid.uuid4(), ext)
+    return os.path.join('news/', filename)
 
 class Category(models.Model):
     """СЕО натсрйоки"""
@@ -11,7 +23,7 @@ class Category(models.Model):
     
     """Основные данные категории"""
     h1 = models.CharField(max_length=255, verbose_name="Заголовок H1")
-    image_zast = models.ImageField(upload_to='cat/image', verbose_name="Заставка категории", blank=True)
+    image_zast = models.ImageField(upload_to=get_file_path_category, verbose_name="Заставка категории", blank=True)
     post = RichTextField( verbose_name="Содержание", blank=True)
     introtext = models.TextField(max_length=1000, verbose_name="Краткое описание", blank=True)
 
@@ -36,6 +48,7 @@ class Category(models.Model):
         if not self.slug:
             self.slug = slugify(self.title)
         return super(Category, self).save(*args, **kwargs)
+    
 
 
 class News(models.Model):
@@ -44,9 +57,9 @@ class News(models.Model):
     description = models.CharField(max_length=350, verbose_name="Заголовок Description", blank=True)
     
     """Основные данные категории"""
-    parent = models.OneToOneField(Category, on_delete=models.PROTECT, verbose_name="Категория", related_name="parent")
+    parent = models.ForeignKey(Category, on_delete=models.PROTECT, verbose_name="Категория", related_name="parent")
     h1 = models.CharField(max_length=255, verbose_name="Заголовок H1")
-    image_zast = models.ImageField(upload_to='cat/image', verbose_name="Заставка статьи", blank=True)
+    image_zast = models.ImageField(upload_to=get_file_path_news, verbose_name="Заставка статьи", blank=True)
     post = RichTextField( verbose_name="Содержание", blank=True)
     introtext = models.TextField(max_length=1000, verbose_name="Краткое описание", blank=True)
 
