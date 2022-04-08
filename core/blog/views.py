@@ -33,11 +33,11 @@ def DetailPosts(request, slug_category):
     )
 
 
-def DetailNews(request, slug_news, slug_category):
+def DetailNews(request, slug_category, slug_news):
     try:
         news=News.objects.get(slug=slug_news)
-    except Category.DoesNotExist:
-        raise Http404("Категория не найдена")
+    except News.DoesNotExist:
+        raise Http404("Статья не найдена")
 
     #book_id=get_object_or_404(Book, pk=pk)
 

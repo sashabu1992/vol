@@ -53,7 +53,7 @@
                             <div class="hr-line-dashed"></div>
                                 <div class="search-result">
                                    <h3>{{ news.h1 }}</h3>
-                                 <a href="#" class="search-link">{{ news.slug }}</a>
+                                 <a href="{% url 'DetailNews' news.parent.slug news.slug %}" class="search-link">{{ news.slug }}</a>
                                  <p>
                                     {{ news.post }}
                                 </p>
