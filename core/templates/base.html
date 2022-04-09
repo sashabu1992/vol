@@ -35,11 +35,16 @@
             <div class="sidebar-collapse">
                 <ul class="nav metismenu" id="side-menu">
                     <li class="nav-header">
-                        <div class="dropdown profile-element">
+                        <div class="dropdown profile-element txtcenter">
                            
                  {% if request.user.is_authenticated %}
- <img alt="image" class="rounded-circle" src="{% static 'img/profile_small.jpg' %}"/>
- <span class="block m-t-xs font-bold">{{user.first_name}} {{user.last_name}} </span>
+
+
+
+
+      <img src="/media/{% show_profile_logo user.pk %}" class="rounded-circle rug" alt="{{user.first_name}} {{user.last_name}}">
+
+ <span class="block m-t-xs font-bold fontcio">{{user.first_name}} {{user.last_name}} </span>
              
 {% else %}
  <span class="block m-t-xs font-bold"> </span>
@@ -88,6 +93,11 @@
 
 
                      {% if request.user.is_authenticated %}
+                      <li>
+                    <a href="{% url 'profile_link' user.pk %}">
+                        <i class="fa fa-user-o"></i> Личный кабинет
+                    </a>
+                </li>
                  <li>
                     <a href="{% url 'logout' %}">
                         <i class="fa fa-sign-out"></i> Выйти
